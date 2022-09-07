@@ -1,0 +1,49 @@
+package com.company;
+
+import java.util.Date;
+import java.io.*;
+
+public class Paciente {
+    String nome;
+    String sobrenome;
+    String historiaClinica;
+    Date dataInternacao;
+    Date dataAlta;
+
+
+    Paciente(String nome, String sobrenome, String historiaClinica, Date dataInternacao) {  
+    	Date hoje = new Date();
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        dataAlta = null;
+        if (dataInternacao.before(hoje))
+            this.dataInternacao = dataInternacao;
+    }
+
+    public Date getDataInternacao() {
+        return dataInternacao;
+    }
+
+    public Date getDataAlta() {
+        return dataAlta;
+    }
+    
+    public void darAlta(Date dataAlta)  {
+        if (dataAlta.after(dataInternacao)) {
+		    System.out.println("Ok");
+        } else {
+
+        	System.out.println("Não pode");
+        }
+    }
+
+//    public void darAlta(Date dataAlta) throws MyException {
+//        if (dataAlta.after(dataInternacao)) {
+//		    System.out.println("Ok");
+//        } else {
+//		    
+//		    throw new MyException("Não pode");
+//        }
+//    }
+
+}
